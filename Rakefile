@@ -15,12 +15,15 @@ task :prepare do
   system "chmod +x dist/update.sh"
 end
 
-desc "vagrant up"
-task :up => :prepare do
-  system "vagrant up"
+namespace :vagrant do
+  desc "vagrant up"
+  task :up => :prepare do
+    system "vagrant up"
+  end
+  
+  desc "vagrant destroy"
+  task :destroy do
+    system "vagrant destroy"
+  end
 end
 
-desc "vagrant destroy"
-task :destroy do
-  system "vagrant destroy"
-end
