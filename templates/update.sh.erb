@@ -1,4 +1,4 @@
 #!/bin/bash
 
 (cd ${HOME}/archive/dists/precise/universe ; dpkg-scanpackages binary-amd64 . /dev/null > binary-amd64/Packages)
-(cd ${HOME}/archive/dists/precise/universe ; s3cmd sync —acl-public ./ s3://<%= S3_BUCKET %>/dists/precise/universe/)
+(cd ${HOME}/archive/dists/precise/universe ; s3cmd sync --acl-public ./ s3://<%= S3_BUCKET %>/dists/precise/universe/)
