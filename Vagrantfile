@@ -13,7 +13,8 @@ Vagrant.configure("2") do |config|
   config.vm.provision :shell, :inline => "su - vagrant -c 'cp /vagrant/dist/update.sh .'"
   config.vm.provision :shell, :inline => "su - vagrant -c 'mkdir archive'"
   config.vm.provision :shell, :inline => "su - vagrant -c 'cd archive ; s3cmd get --recursive s3://#{S3_BUCKET}'"
-  config.vm.provision :shell, :path => "scripts/open_ssh.sh"
+  config.vm.provision :shell, :path   => "scripts/open_ssh.sh"
+  config.vm.provision :shell, :inline => "ifconfig -a | grep 'inet addr' | grep -v 127.0.0.1"
 
   config.vm.provider :virtualbox do |vb|
     # enable the gui.  the default behavior is to start up headless
